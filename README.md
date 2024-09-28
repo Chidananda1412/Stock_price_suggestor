@@ -1,70 +1,130 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+# **Stock Price Suggestor**
 
-In the project directory, you can run:
+A simple web application built with **React.js** that allows users to input their budget and select a company to receive real-time stock price suggestions. The app fetches stock prices using the **Alpha Vantage API**, converts them into INR, and provides suggestions on how many shares a user can buy based on their budget.
 
-### `npm start`
+## **Table of Contents**
+- [Features](#features)
+- [Technologies Used](#technologies-used)
+- [Setup and Installation](#setup-and-installation)
+- [Usage](#usage)
+- [API Integration](#api-integration)
+- [Project Structure](#project-structure)
+- [Future Enhancements](#future-enhancements)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+---
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## **Features**
 
-### `npm test`
+- Fetches real-time stock prices for **18 global companies**.
+- Calculates stock prices in **INR** (Indian Rupees) using a predefined exchange rate.
+- Suggests how many shares a user can purchase based on their **budget**.
+- Responsive design for a smooth experience on both desktop and mobile devices.
+- Error handling for failed API requests or invalid stock data.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+---
 
-### `npm run build`
+## **Technologies Used**
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- **React.js**: For building the user interface and handling state.
+- **JavaScript (ES6+)**: Used for API calls and form handling.
+- **Axios**: For making API requests to the Alpha Vantage API.
+- **Alpha Vantage API**: To fetch real-time stock data.
+- **HTML5/CSS3**: For building and styling the UI.
+  
+---
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## **Setup and Installation**
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+To run this project locally, follow these steps:
 
-### `npm run eject`
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/your-username/stock-price-suggestor.git
+   ```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+2. **Navigate to the project directory:**
+   ```bash
+   cd stock-price-suggestor
+   ```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+3. **Install the dependencies:**
+   ```bash
+   npm install
+   ```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+4. **Start the development server:**
+   ```bash
+   npm start
+   ```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+5. **Open the app in your browser:**
+   Navigate to `http://localhost:3000` to view the app.
 
-## Learn More
+---
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## **Usage**
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+1. **Enter your budget** in INR in the input field.
+2. **Select a company** from the dropdown menu, which includes 18 popular companies such as Apple, Google, Tesla, etc.
+3. **Click "Suggest Stock"** to receive a suggestion on how many shares you can buy based on your budget and the real-time stock price.
+4. **View the result** in the output section, showing how many shares you can purchase and the stock price in INR.
 
-### Code Splitting
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## **API Integration**
 
-### Analyzing the Bundle Size
+This project uses the **Alpha Vantage API** to fetch real-time stock data.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+1. Replace the placeholder `apiKey` in `App.js` with your actual API key:
+   ```javascript
+   const apiKey = 'YOUR_API_KEY';
+   ```
 
-### Making a Progressive Web App
+2. The API endpoint used for fetching stock prices:
+   ```
+   https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=COMPANY_SYMBOL&apikey=YOUR_API_KEY
+   ```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+3. The app assumes a fixed exchange rate of **1 USD = 75 INR** for converting stock prices from USD to INR.
 
-### Advanced Configuration
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+## **Project Structure**
 
-### Deployment
+```
+stock-price-suggestor/
+├── public/
+│   ├── index.html
+│   └── ...
+├── src/
+│   ├── App.js        # Main React component
+│   ├── App.css       # Stylesheet
+│   ├── index.js      # Entry point for React
+│   └── ...
+├── package.json      # Project dependencies and scripts
+├── README.md         # Project documentation
+└── ...
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+---
 
-### `npm run build` fails to minify
+## **Future Enhancements**
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- **Dynamic Currency Conversion**: Fetch the real-time INR conversion rate from an API to provide accurate pricing.
+- **Historical Data**: Display historical stock data and price trends for better investment insights.
+- **Chart Visualization**: Implement stock price movement charts using a library like **Chart.js** or **Recharts**.
+- **Portfolio Feature**: Add the ability for users to track their stock portfolio and visualize growth over time.
+
+---
+
+## **License**
+
+This project is licensed under the MIT License.
+
+---
+
+**Author**: Chidananda A 
+**Contact**: chidananda1412@gmail.com
+
